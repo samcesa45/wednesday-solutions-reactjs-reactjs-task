@@ -2,6 +2,7 @@
 	"name": "reactjs-task",
 	"proxy": "https://itunes.apple.com",
 	"version": "0.1.0",
+	"homepage": "https://github.com/samcesa45.github.io/wednesday-solutions-reactjs-reactjs-task",
 	"private": true,
 	"dependencies": {
 		"@material-ui/core": "^4.11.3",
@@ -22,7 +23,9 @@
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"predeploy": "npm build",
+		"deploy": "gh-pages -d build"
 	},
 	"eslintConfig": {
 		"extends": [

@@ -1,4 +1,10 @@
-import { Typography, TextField, makeStyles } from '@material-ui/core';
+import {
+	Typography,
+	TextField,
+	makeStyles,
+	Grid,
+	Paper,
+} from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import classes from './Favourite.module.css';
@@ -58,9 +64,16 @@ const Favourite = (props) => {
 					/>
 				</div>
 			</div>
-			{items.map((item, index) => (
-				<SingleCard key={index} item={item} />
-			))}
+			<Grid
+				container
+				spacing={2}
+				style={{ marginTop: '1.5rem', marginLeft: '1.5rem' }}>
+				{items.map((item, index) => (
+					<Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
+						<SingleCard key={item.artistId} item={item} />
+					</Grid>
+				))}
+			</Grid>
 		</div>
 	);
 };

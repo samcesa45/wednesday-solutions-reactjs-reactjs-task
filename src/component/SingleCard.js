@@ -1,11 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
 	Typography,
-	TextField,
 	CardContent,
 	Card,
 	Button,
-	Grid,
 	makeStyles,
 	CardActionArea,
 	IconButton,
@@ -54,63 +52,55 @@ const SingleCard = (props) => {
 		if (currentSong) {
 			inputRef.current.play();
 		}
-		console.log(currentSong);
 	}, [currentSong]);
 	return (
 		<>
-			<Grid container justify="space-between">
-				<Grid item>
-					<Card className={classes.root}>
-						<CardActionArea>
-							<CardMedia
-								image={item.artworkUrl100}
-								title="artwork"
-								className={classes.media}
-							/>
-							<CardContent>
-								<Typography
-									gutterBottom
-									variant="caption"
-									color="textSecondary">
-									{item.artistName}
-								</Typography>
-								<Typography color="textSecondary" variant="body1">
-									{item.collectionName}
-								</Typography>
-							</CardContent>
-						</CardActionArea>
-						<CardActions>
-							<Button
-								disabled={disabledMovie}
-								size="small"
-								color="primary"
-								onClick={() => props.addToFavourite(item)}>
-								{item ? 'add to favorite' : 'remove from favorite'}
-							</Button>
-							<Button
-								// disabled={disabledMovie}
-								size="small"
-								color="primary"
-								onClick={() => props.removeFromFavourite(item)}>
-								{item ? 'remove from favorite' : { disabledMovie }}
-							</Button>
-							<audio ref={inputRef} src={currentSong} />
-							<IconButton
-								size="small"
-								color="primary"
-								onClick={() => handlePlay(item.previewUrl)}>
-								<PlayArrowIcon />
-							</IconButton>
-							<IconButton
-								size="small"
-								color="primary"
-								onClick={() => inputRef.current.pause()}>
-								<PauseIcon />
-							</IconButton>
-						</CardActions>
-					</Card>
-				</Grid>
-			</Grid>
+			<Card className={classes.root}>
+				<CardActionArea>
+					<CardMedia
+						image={item.artworkUrl100}
+						title="artwork"
+						className={classes.media}
+					/>
+					<CardContent>
+						<Typography gutterBottom variant="caption" color="textSecondary">
+							{item.artistName}
+						</Typography>
+						<Typography color="textSecondary" variant="body1">
+							{item.collectionName}
+						</Typography>
+					</CardContent>
+				</CardActionArea>
+				<CardActions>
+					<Button
+						disabled={disabledMovie}
+						size="small"
+						color="primary"
+						onClick={() => props.addToFavourite(item)}>
+						{item ? 'add to favorite' : 'remove from favorite'}
+					</Button>
+					<Button
+						// disabled={disabledMovie}
+						size="small"
+						color="primary"
+						onClick={() => props.removeFromFavourite(item)}>
+						{item ? 'remove from favorite' : { disabledMovie }}
+					</Button>
+					<audio ref={inputRef} src={currentSong} />
+					<IconButton
+						size="small"
+						color="primary"
+						onClick={() => handlePlay(item.previewUrl)}>
+						<PlayArrowIcon />
+					</IconButton>
+					<IconButton
+						size="small"
+						color="primary"
+						onClick={() => inputRef.current.pause()}>
+						<PauseIcon />
+					</IconButton>
+				</CardActions>
+			</Card>
 		</>
 	);
 };
